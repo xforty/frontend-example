@@ -41,7 +41,7 @@ module.exports = (grunt) ->
         tasks: ['coffee:compile']
       bower:
         files: 'bower.json'
-        tasks: ['bowerInstall', 'bower']
+        tasks: ['bower_install', 'bower']
 
     coffee:
       compile:
