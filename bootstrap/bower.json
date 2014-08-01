@@ -1,0 +1,7 @@
+{
+  "name": "frontend-example",
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "bootstrap": "~3.2.0"
+  }
+}
