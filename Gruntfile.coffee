@@ -27,7 +27,7 @@ module.exports = (grunt) ->
     deps = wiredep directory: bower.config.directory
     if deps?.css?
       for css_full_path in deps.css
-        css_path = path.relative 'www/', css_full_path
+        css_path = path.relative 'public/', css_full_path
         content += "link(rel='stylesheet', href='#{css_path}')"
     grunt.file.write(@data.out,content)
 
@@ -47,12 +47,12 @@ module.exports = (grunt) ->
         flatten: true,
         cwd: "#{__dirname}",
         src: ['src/*.coffee'],
-        dest: 'www/js/',
+        dest: 'public/js/',
         ext: '.js'
 
     bower:
       configure:
-        rjsConfig: 'www/js/bower.js'
+        rjsConfig: 'public/js/bower.js'
 
     bower_css:
       target:
@@ -62,7 +62,7 @@ module.exports = (grunt) ->
       server:
         options:
           port: 8888
-          base: 'www'
+          base: 'public'
 
     jade:
       compile:
@@ -73,7 +73,7 @@ module.exports = (grunt) ->
            expand: true
            cwd: "views/"
            src: ["**.jade"]
-           dest: "www/"
+           dest: "public/"
            ext: ".html"
          ]
 
