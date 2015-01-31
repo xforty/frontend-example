@@ -15,8 +15,6 @@ module.exports = (grunt) ->
   grunt.registerTask('build',['bower_install', 'bower:configure', 'coffee:compile', 'bower_css', 'jade:compile'])
   grunt.registerTask('dev',['default', 'connect','watch'])
 
-  bower.config.directory = 'www/contrib'
-
   grunt.registerTask 'bower_install', 'Install bower modules', ->
     done = @async()
     bower.commands.install().on 'end', (results) ->
