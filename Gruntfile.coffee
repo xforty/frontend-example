@@ -1,18 +1,18 @@
 module.exports = (grunt) ->
   bower = require 'bower'
-  wiredep = require 'wiredep'
   path = require 'path'
 
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-bower-requirejs')
   grunt.loadNpmTasks('grunt-contrib-jade')
+  grunt.loadNpmTasks('grunt-wiredep')
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-connect')
 
   grunt.registerTask('default',['build'])
 
-  grunt.registerTask('build',['bower_install', 'bowerRequirejs', 'coffee:compile', 'bower_css', 'jade:compile'])
+  grunt.registerTask('build',['bower_install', 'bowerRequirejs', 'coffee:compile', 'jade:compile', 'wiredep'])
   grunt.registerTask('dev',['default', 'connect','watch'])
 
   grunt.registerTask 'bower_install', 'Install bower modules', ->
@@ -39,7 +39,10 @@ module.exports = (grunt) ->
         tasks: ['coffee:compile']
       bower:
         files: 'bower.json'
-        tasks: ['bower_install', 'bower']
+        tasks: ['bower_install', 'bowerRequirejs']
+      jade:
+        files: 'views/*.jade'
+        tasks: ['jade:compile', 'wiredep']
 
     coffee:
       compile:
@@ -54,9 +57,9 @@ module.exports = (grunt) ->
       configure:
         rjsConfig: 'public/js/bower.js'
 
-    bower_css:
-      target:
-        out: 'tmp/stylesheets.jade'
+    wiredep:
+      html:
+        src: [ 'public/**/*.html' ]
 
     connect:
       server:
