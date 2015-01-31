@@ -12,7 +12,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask('default',['build'])
 
-  grunt.registerTask('build',['bower_install', 'bower:configure', 'coffee:compile', 'bower_css', 'jade:compile'])
+  grunt.registerTask('build',['bower_install', 'bowerRequirejs', 'coffee:compile', 'bower_css', 'jade:compile'])
   grunt.registerTask('dev',['default', 'connect','watch'])
 
   grunt.registerTask 'bower_install', 'Install bower modules', ->
@@ -50,7 +50,7 @@ module.exports = (grunt) ->
         dest: 'public/js/',
         ext: '.js'
 
-    bower:
+    bowerRequirejs:
       configure:
         rjsConfig: 'public/js/bower.js'
 
