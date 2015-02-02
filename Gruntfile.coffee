@@ -8,12 +8,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-wiredep')
 
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-connect')
+  grunt.loadNpmTasks('grunt-express-server')
 
   grunt.registerTask('default',['build'])
 
   grunt.registerTask('build',['bower_install', 'bowerRequirejs', 'coffee:compile', 'jade:compile', 'wiredep'])
-  grunt.registerTask('dev',['default', 'connect','watch'])
+  grunt.registerTask('dev',['default', 'express:dev','watch'])
 
   grunt.registerTask 'bower_install', 'Install bower modules', ->
     done = @async()
@@ -43,6 +43,11 @@ module.exports = (grunt) ->
       jade:
         files: 'views/*.jade'
         tasks: ['jade:compile', 'wiredep']
+      server:
+        files: 'server/**/*.coffee'
+        tasks: ['express:dev']
+        options:
+          spawn: false
 
     coffee:
       compile:
@@ -61,11 +66,13 @@ module.exports = (grunt) ->
       html:
         src: [ 'public/**/*.html' ]
 
-    connect:
-      server:
+    express:
+      options:
+        port: 8888
+        bases: 'public'
+      dev:
         options:
-          port: 8888
-          base: 'public'
+          script: path.resolve(__dirname,'app.js')
 
     jade:
       compile:
