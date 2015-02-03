@@ -6,13 +6,13 @@ module.exports = (grunt) ->
     coffee: 'coffee:compile'
   watch:
     coffee:
-      files: 'src/*.coffee'
+      files: 'scripts/*.coffee'
       tasks: ['coffee:compile']
   coffee:
     compile:
       expand: true,
       flatten: true,
       cwd: "#{__dirname}",
-      src: ['src/*.coffee'],
+      src: ['scripts/*.coffee'],
       dest: 'public/js/',
       ext: '.js'
