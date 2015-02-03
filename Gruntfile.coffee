@@ -44,7 +44,7 @@ module.exports = (grunt) ->
         files: 'views/*.jade'
         tasks: ['jade:compile', 'wiredep']
       server:
-        files: 'server/**/*.coffee'
+        files: ['server/**/*.coffee', 'app.js']
         tasks: ['express:dev']
         options:
           spawn: false
@@ -70,6 +70,7 @@ module.exports = (grunt) ->
       options:
         port: 8888
         bases: 'public'
+        output: 'server started'
       dev:
         options:
           script: path.resolve(__dirname,'app.js')
