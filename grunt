@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+if [ -z "$NODEJS" ]
+then
+  if type nodejs &> /dev/null
+  then
+    NODEJS=nodejs
+  elif type node &> /dev/null
+  then
+    NODEJS=node
+  else
+    echo 1>&2 "Cannot find node. Please set NODEJS env variable"
+    exit 1
+  fi
+fi
+
+exec "${NODEJS[@]}" "$(dirname "$0")/node_modules/grunt-cli/bin/grunt" "$@"
