@@ -1,5 +1,6 @@
 module.exports = (grunt) ->
   _ = require 'lodash'
+  path = require 'path'
 
   grunt.registerTask('default',['build'])
 

@@ -37,8 +37,7 @@ module.exports = (grunt) ->
   express:
     options:
       port: 8888
-      bases: 'public'
       output: 'server started'
     dev:
       options:
-        script: path.resolve(__dirname,'app.js')
+        script: 'app.js'
