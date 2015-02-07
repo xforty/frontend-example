@@ -13,6 +13,7 @@ module.exports = (grunt) ->
   loadConfig 'base'
   loadConfig 'bower'
   loadConfig 'wiredep'
+  loadConfig 'copy'
 
   loadConfig 'coffee'
   loadConfig 'jade'
