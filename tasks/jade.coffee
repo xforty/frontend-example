@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     jade: 'jade:compile'
   watch:
     jade:
-      files: 'html/**/*.jade'
+      files: ['html/**/*.jade','!html/contrib/**/*.jade']
       tasks: ['jade:compile']
   jade:
     compile:
@@ -15,7 +15,7 @@ module.exports = (grunt) ->
       files: [
         expand: true
         cwd: "html/"
-        src: ["**/*.jade"]
+        src: ["**/*.jade","!contrib/**/*.jade"]
         dest: "public/"
         ext: ".html"
       ]

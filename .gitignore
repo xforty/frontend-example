@@ -3,4 +3,6 @@ bower_components
 /tmp/*
 /public/**/*.html
 /public/js
-/public/contrib
+/public/css
+/public/contrib/*
+!/public/contrib/.gitkeep

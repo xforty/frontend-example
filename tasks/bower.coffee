@@ -9,7 +9,8 @@ module.exports = (grunt) ->
       done()
 
   build:
-    bower: 'bower_install'
+    bower:
+     3: 'bower_install'
   watch:
     bower:
       files: 'bower.json'

@@ -1,6 +1,6 @@
 module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-copy')
-  assetFiles = ['js/**/*.js','css/**/*.css']
+  assetFiles = ['js/**/*.js','css/**/*.css','!js/contrib/**/*.js','!css/contrib/**/*.css']
 
   build:
     copy: ['copy:html','copy:assets']
@@ -9,7 +9,7 @@ module.exports = (grunt) ->
       files: assetFiles
       tasks: ['copy:assets']
     copy_html:
-      files: 'html/**/*.html'
+      files: ['html/**/*.html','!html/contrib/**/*.html']
       tasks: ['copy:html']
   copy:
     assets:
@@ -17,7 +17,7 @@ module.exports = (grunt) ->
       expand: true,
       dest: 'public/',
     html:
-      src: '**/*.html'
+      src: ['**/*.html','!contrib/**/*.html']
       expand: true,
       cwd: "html",
       dest: 'public/',
